@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerie Produits</title>
+
+    <style>
+       
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: 0.3s ease-in-out;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+        }
+
+        :root {
+            --bg: #f2f2f2;
+            --text: #222;
+            --card-bg: #fff;
+            --card-border: #ddd;
+        }
+
+        .dark {
+            --bg: #121212;
+            --text: #f5f5f5;
+            --card-bg: #1e1e1e;
+            --card-border: #333;
+        }
+
+       
+        .theme-toggle {
+            margin-bottom: 30px;
+            padding: 10px 20px;
+            background: var(--text);
+            color: var(--bg);
+            border-radius: 8px;
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+        }
+
+     
+        .gallery {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 280px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s forwards;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .card-content h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .card-content p {
+            opacity: 0.8;
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BOUTON DE THEME -->
+    <button class="theme-toggle" id="themeBtn">Mode sombre</button>
+
+    <!-- GALERIE -->
+    <div class="gallery">
+        <div class="card" style="animation-delay: 0.1s;">
+            <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad" alt="Produit 1">
+            <div class="card-content">
+                <h3>Casque Pro</h3>
+                <p>Confort maximal et réduction du bruit.</p>
+            </div>
+        </div>
+
+        <div class="card" style="animation-delay: 0.3s;">
+            <img src="https://images.unsplash.com/photo-1512446733611-9099a758e8e0" alt="Produit 2">
+            <div class="card-content">
+                <h3>Chaussures Sport</h3>
+                <p>Pour un style moderne et confortable.</p>
+            </div>
+        </div>
+
+        <div class="card" style="animation-delay: 0.5s;">
+            <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d" alt="Produit 3">
+            <div class="card-content">
+                <h3>Sac à Dos Pro</h3>
+                <p>Idéal pour les voyages et le travail.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const btn = document.getElementById("themeBtn");
+        const body = document.body;
+
+        btn.addEventListener("click", () => {
+            body.classList.toggle("dark");
+
+            if (body.classList.contains("dark")) {
+                btn.textContent = "Mode clair";
+            } else {
+                btn.textContent = "Mode sombre";
+            }
+        });
+    </script>
+
+</body>
+</html>
